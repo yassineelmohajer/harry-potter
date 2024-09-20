@@ -1,0 +1,50 @@
+def wall():
+    if is_in_front_of_enemy():
+        turn_left()
+        
+    while not can_move():
+        turn_right()
+        if can_move():
+            move()
+            turn_left()
+        else:
+            turn_right()
+            turn_right()
+            move()
+            turn_right()
+            while not can_move():
+                turn_left()
+                move()
+                turn_right()
+    move()
+
+while not is_on_target():
+    if get_x() < get_target_x():
+        while get_direction() != EAST:
+            turn_right()
+        if can_move() and not is_in_front_of_enemy():
+            move()
+        else:
+            wall()
+    elif get_x() > get_target_x():
+        while get_direction() != WEST:
+            turn_right()
+        if can_move() and not is_in_front_of_enemy():
+            move()
+        else:
+            wall()
+    elif get_y() < get_target_y():
+        while get_direction() != SOUTH:
+            turn_right()
+        if can_move() and not is_in_front_of_enemy():
+            move()
+        else:
+             wall()
+    elif get_y() > get_target_y():
+        while get_direction() != NORTH:
+            turn_right()
+        if can_move() and not is_in_front_of_enemy():
+            move()
+        else:
+            wall()
+destroy_voldemort()
